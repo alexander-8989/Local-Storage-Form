@@ -15,42 +15,63 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="headings">
-            <h1>Contact Form</h1>
-        </div>
-        <div class="name">
-            <div class="name1">
-                <label for="name">Name:<span>*</span></label><br>
-                <label for="firstName">First name:</label>
-                <input type="text" name="firstName" id="firstName">
-                <label for="lastName">Last name:</label>
-                <input type="text" name="lastName" id="lastName">
+    <form action="#" method="post">
+        <div class="container">
+            <div class="headings">
+                <h1>Contact Form</h1>
             </div>
+
+            <div class="name">
+                <div class="name1">
+                    <label>Name:<span style="color: red;">*</span></label>
+                </div>
+                <div class="innerName">
+                    <div class="firstName">
+                        <input type="text" placeholder="First Name" name="firstName" id="firstName">
+                        <span class="fname" id="fname"></span>
+                    </div>
+                    <div class="lastName">
+                        <input type="text" placeholder="Last Name" name="lastName" id="lastName">
+                        <span class="lname" id="lname"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="email"><br>
+                <label for="email">Email:<span style="color: red;">*</span></label><br>
+                <input type="email" name="email" id="email">
+                <span id="em"></span>
+            </div>
+
+            <div class="jobtitle"><br>
+                <label for="jobTitle">Job Title:<span style="color: red;">*</span></label><br>
+                <input type="text" name="jobtitle" id="jobTitle">
+                <span id="jobT"></span>
+            </div>
+
+            <div class="gender"><br>
+                <label for="gender">Gender:<span style="color: red;">*</span></label><br>
+                <input type="radio" id="gender" name="age" value="male">
+                <label for="age1">Male</label>
+                <input type="radio" id="gender" name="age" value="female">
+                <label for="age2">Female</label>
+                <input type="radio" id="gender" name="age" value="other">
+                <label for="age3">Other</label><br>
+                <span id="gen"></span>  
+            </div>
+
+            <div class="phone"><br>
+                <label for="phone">Phone:<span style="color: red;">*</span></label><br>
+
+                <input type="text" class="noscroll" name="phone" id="phone" onkeypress="return onlyNumberKey(event)"
+                    maxlength="10" />
+                <span id="phn"></span>
+            </div>
+
+            <br>
+            <input type="button" id="submit" value="Submit" onclick="myValidate()">
         </div>
-        <div class="email">
-            <label for="email">Email:<span>*</span></label><br>
-            <input type="email" name="email" id="email">
-        </div>
-        <div class="jobtitle">
-            <label for="jobTitle">Job Title:<span>*</span></label><br>
-            <input type="text" name="jobTitle" id="jobTitle">
-        </div>
-        <div class="gender">
-            <label for="gender">Gender:<span>*</span></label><br>
-            <input type="radio" id="male" name="age" value="male">
-            <label for="age1">Male</label>
-            <input type="radio" id="female" name="age" value="female">
-            <label for="age2">Female</label>
-            <input type="radio" id="other" name="age" value="other">
-            <label for="age3">Other</label><br>
-        </div>
-        <div class="phone">
-            <label for="phone">Phone:<span>*</span></label><br>
-            <input type="number" name="phone" id="phone">
-        </div>
-        <button type="submit">Submit</button>
-    </div>
+    </form>
 </body>
 
 </html>
