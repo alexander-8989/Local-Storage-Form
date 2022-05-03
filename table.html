@@ -8,18 +8,16 @@
     <title>Table</title>
     <!-- Externaal links -->
     <link rel="stylesheet" href="/table.css">
-    <script src="/table.js"></script>
     <!-- External Links -->
 </head>
 
 <body>
-
+    <div class="search">
+        <input type="search" name="search" id="search" placeholder="search">
+    </div><br><br>
     <div class="main">
-        <div class="search">
-            <input type="search" name="search" id="search" placeholder="search">
-        </div><br><br>
         <div class="table">
-            <table id="example" style="width:80%">
+            <table id="data">
                 <thead>
                     <tr>
                         <th>Sr.No</th>
@@ -27,13 +25,40 @@
                         <th>lastName</th>
                         <th>fullName</th>
                         <th>email</th>
+                        <th>jobTitle</th>
                         <th>gender</th>
                         <th>phone</th>
                     </tr>
                 </thead>
+                <tbody id="tableData">
+
+                </tbody>
             </table>
         </div>
     </div>
+
+    <!-- JavaScript -->
+    <script>
+        var existingEntries = JSON.parse(localStorage.getItem('person'));
+        var tabledata = "";
+
+        for (let i = 0; i < existingEntries.length; i++) {
+            tabledata += "<tr>" +
+                "<td>" + Number(i + 1) + "</td>" +
+                "<td>" + existingEntries[i]['firstname'] + "</td>" +
+                "<td>" + existingEntries[i]['lastname'] + "</td>" +
+                "<td>" + existingEntries[i]['firstname'] + ' ' + existingEntries[i]['lastname'] + "</td>" +
+                "<td>" + existingEntries[i]['email'] + "</td>" +
+                "<td>" + existingEntries[i]['jobtitle'] + "</td>" +
+                "<td>" + existingEntries[i]['gender'] + "</td>" +
+                "<td>" + existingEntries[i]['phone'] + "</td>"
+
+            "</tr>";
+
+            document.getElementById('tableData').innerHTML = tabledata;
+        }
+    </script>
+    <!-- JavaScript -->
 </body>
 
 </html>

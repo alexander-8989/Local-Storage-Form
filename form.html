@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <form action="#" method="post">
+    <form action="/table.html" method="post">
         <div class="container">
             <div class="headings">
                 <h1>Contact Form</h1>
@@ -27,26 +27,26 @@
                 </div>
                 <div class="innerName">
                     <div class="firstName">
-                        <input type="text" placeholder="First Name" name="firstName" id="firstName">
-                        <span class="fname" id="fname"></span>
+                        <input type="text" placeholder="First Name" name="firstName" id="firstName" autocomplete="off">
+                        <span class="color" id="fname"></span>
                     </div>
                     <div class="lastName">
-                        <input type="text" placeholder="Last Name" name="lastName" id="lastName">
-                        <span class="lname" id="lname"></span>
+                        <input type="text" placeholder="Last Name" name="lastName" id="lastName" autocomplete="off">
+                        <span class="color" id="lname"></span>
                     </div>
                 </div>
             </div>
 
             <div class="email"><br>
                 <label for="email">Email:<span style="color: red;">*</span></label><br>
-                <input type="email" name="email" id="email">
-                <span id="em"></span>
+                <input type="email" name="email" id="email" autocomplete="off">
+                <span class="color" id="em"></span>
             </div>
 
             <div class="jobtitle"><br>
                 <label for="jobTitle">Job Title:<span style="color: red;">*</span></label><br>
-                <input type="text" name="jobtitle" id="jobTitle">
-                <span id="jobT"></span>
+                <input type="text" name="jobtitle" id="jobTitle" autocomplete="off">
+                <span class="color" id="jobT"></span>
             </div>
 
             <div class="gender"><br>
@@ -57,19 +57,20 @@
                 <label for="age2">Female</label>
                 <input type="radio" id="gender" name="age" value="other">
                 <label for="age3">Other</label><br>
-                <span id="gen"></span>  
+                <span class="color" id="gen"></span>
             </div>
 
             <div class="phone"><br>
                 <label for="phone">Phone:<span style="color: red;">*</span></label><br>
 
                 <input type="text" class="noscroll" name="phone" id="phone" onkeypress="return onlyNumberKey(event)"
-                    maxlength="10" />
-                <span id="phn"></span>
+                    maxlength="10" autocomplete="off">
+                <span class="color" id="phn"></span>
             </div>
 
             <br>
             <input type="button" id="submit" value="Submit" onclick="myValidate()">
+            <input type="reset" id="reset" value="Reset">
         </div>
     </form>
 </body>

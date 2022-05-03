@@ -1,12 +1,45 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-#search{
-    border-radius: 10px;
-    float: right;
+.main {
+    margin-top: 20px;
 }
 
-.table{
-    border: 1px solid blue;
+#search {
+    border-radius: 10px;
+    float: right;
+    font-size: 20px;
+    margin: 15px;
+}
+
+.table {
+    border: 3px solid mediumseagreen;
+}
+
+#data {
+    width: 100%;
+}
+
+#data th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+#data td,
+#data th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    border: 2px solid pink;
+}
+
+#data tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#data tr:hover {
+    background-color: #ddd;
 }
