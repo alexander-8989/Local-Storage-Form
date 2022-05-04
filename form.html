@@ -27,11 +27,11 @@
                 </div>
                 <div class="innerName">
                     <div class="firstName">
-                        <input type="text" placeholder="First Name" name="firstName" id="firstName" autocomplete="off">
+                        <input type="text" placeholder="First Name" name="firstName" id="firstName" autocomplete="off" oninput="allow_alphabets(this)"  onblur="this.value=removeSpaces(this.value);">
                         <span class="color" id="fname"></span>
                     </div>
                     <div class="lastName">
-                        <input type="text" placeholder="Last Name" name="lastName" id="lastName" autocomplete="off">
+                        <input type="text" placeholder="Last Name" name="lastName" id="lastName" autocomplete="off" oninput="allow_alphabets(this)" onblur="this.value=removeSpaces(this.value);">
                         <span class="color" id="lname"></span>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
 
             <div class="jobtitle"><br>
                 <label for="jobTitle">Job Title:<span style="color: red;">*</span></label><br>
-                <input type="text" name="jobtitle" id="jobTitle" autocomplete="off">
+                <input type="text" name="jobtitle" id="jobTitle" autocomplete="off" oninput="allow_alphabets(this)">
                 <span class="color" id="jobT"></span>
             </div>
 

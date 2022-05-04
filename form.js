@@ -3,11 +3,9 @@ function myValidate() {
     let firstName = document.getElementById('firstName').value;
     let lastName = document.getElementById('lastName').value;
     let email = document.getElementById('email').value;
-    var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     let jobTitle = document.getElementById('jobTitle').value;
     let gender = document.querySelector('input[name="age"]:checked');
     let phone = document.getElementById('phone').value;
-    let phone1 = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
     if (firstName === "") {
         document.getElementById('fname').innerHTML = "please enter first name";
@@ -17,8 +15,7 @@ function myValidate() {
     }
 
     if (lastName === "") {
-        document.getElementById('lname').innerHTML = "please enter last name";
-        return false;
+        document.getElementById('lname').innerHTML = " ";
     } else if (lastName !== "") {
         document.getElementById('lname').innerHTML = '';
     }
@@ -28,7 +25,13 @@ function myValidate() {
         return false;
     } else if (email !== "") {
         document.getElementById('em').innerHTML = '';
+    }
 
+    emailResult = validateEmail(email);
+    if (emailResult) {
+    } else {
+        document.getElementById('em').innerHTML = 'Invalid email';
+        return false;
     }
 
     if (jobTitle === "") {
@@ -52,12 +55,15 @@ function myValidate() {
         document.getElementById('phn').innerHTML = '';
     }
 
-    /* Local storage validation */
-    var existingEntries = JSON.parse(localStorage.getItem('person'));
-    if (existingEntries == null) {
-        existingEntries = [];
+    phoneResult = isValid(phone);
+    if (phoneResult) {
+    } else {
+        document.getElementById('phn').innerHTML = 'Invalid Phone number';
+        return false;
     }
 
+
+    /* Local storage validation */
     let person = {
         'firstname': firstName.trim(),
         'lastname': lastName.trim(),
@@ -66,9 +72,14 @@ function myValidate() {
         'gender': gender.value,
         'phone': phone,
     };
+
+    let existingEntries = JSON.parse(localStorage.getItem('person'));
+    if (existingEntries == null) {
+        existingEntries = [];
+    }
+
     localStorage.setItem('person', JSON.stringify(person));
     existingEntries.unshift(person);
-
     localStorage.setItem('person', JSON.stringify(existingEntries));
 
     /* validation for redirect the page */
@@ -76,6 +87,40 @@ function myValidate() {
 
     /* validation for reset the page */
     document.getElementById("reset").click();
+
+
+}
+
+
+/* function for email Regex */
+const validateEmail = (email) => {
+    return String(email)
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+};
+
+
+/* function for phone regex*/
+function isValid(p) {
+    var phoneRe = /^[2-9]\d{2}[2-9]\d{2}\d{4}$/;
+    var digits = p.replace(/\D/g, "");
+    return phoneRe.test(digits);
+}
+
+
+/* function for removing space between words */
+function removeSpaces(string) {
+    return string.replace(/  +/g, ' ');
+}
+
+
+/* Validation for Name */
+function allow_alphabets(element) {
+    let textInput = element.value;
+    textInput = textInput.replace(/[^A-Za-z ]*$/gm, "");
+    element.value = textInput;
 }
 
 
@@ -87,5 +132,4 @@ function onlyNumberKey(evt) {
     }
     return true;
 }
-
 

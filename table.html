@@ -13,21 +13,21 @@
 
 <body>
     <div class="search">
-        <input type="search" name="search" id="search" placeholder="search">
+        <input type="search" id="search" placeholder="search" onkeyup="searchFun()">
     </div><br><br>
     <div class="main">
         <div class="table">
             <table id="data">
                 <thead>
-                    <tr>
-                        <th>Sr.No</th>
-                        <th>firstName</th>
-                        <th>lastName</th>
-                        <th>fullName</th>
-                        <th>email</th>
-                        <th>jobTitle</th>
-                        <th>gender</th>
-                        <th>phone</th>
+                    <tr id="style">
+                        <td>Sr.No</td>
+                        <td>firstName</td>
+                        <td>lastName</td>
+                        <td>fullName</td>
+                        <td>email</td>
+                        <td>jobTitle</td>
+                        <td>gender</td>
+                        <td>phone</td>
                     </tr>
                 </thead>
                 <tbody id="tableData">
@@ -39,6 +39,28 @@
 
     <!-- JavaScript -->
     <script>
+
+        /* function for search button */
+        function searchFun(){
+            let filter = document.getElementById('search').value.toUpperCase();
+            let myTable = document.getElementById('data');
+            let tr = myTable.getElementsByTagName('tr');
+
+            for(let i=0; i<tr.length; i++){
+                let td = tr[i].getElementsByTagName('td')[1];
+                if(td){
+                    let textValue = td.textContent || td.innerHTML;
+                    if(textValue.toUpperCase().indexOf(filter) > -1){
+                        tr[i].style.display = '';
+                    }else{
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        
+
+        /* Get data from local storage */
         var existingEntries = JSON.parse(localStorage.getItem('person'));
         var tabledata = "";
 
